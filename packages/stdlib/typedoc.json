@@ -1,0 +1,7 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "out": "../../dist/docs/stdlib",
+  "entryPoints": ["./src/index.ts"],
+  "hideGenerator": true,
+  "excludeInternal": true
+}

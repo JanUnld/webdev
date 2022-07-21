@@ -13,6 +13,13 @@
         "assets": ["packages/stdlib/*.md"]
       }
     },
+    "build-docs": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "packages/stdlib",
+        "command": "npx typedoc --options typedoc.json"
+      }
+    },
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
