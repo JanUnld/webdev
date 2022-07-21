@@ -19,8 +19,8 @@ export function queryObjectPropPath<T = unknown>(
   path = (typeof path === 'string' ? path.split('.') : path) || [];
   // reduce the given keys one after the other to finally reach the desired property
   return (obj != null &&
-    // @ts-ignore innerObj is of type `unknown`
     path.reduce(
+      // @ts-ignore innerObj is of type `unknown`
       (innerObj, nextProperty) => innerObj?.[nextProperty],
       obj
     )) as T;
@@ -35,13 +35,13 @@ export function queryObjectPropPath<T = unknown>(
  * queryObjectProp(obj, (o) => o?.[0]?.prop1?.[1]?.prop2);
  * ```
  * @param obj The targeted object to resolve the path from
- * @param selector The desired selector function or property path as explicit array or dot (.) separated string
+ * @param query The desired query function or property path as explicit array or dot (.) separated string
  */
 export function queryObjectProp<T = unknown, O = unknown>(
   obj: O,
-  selector: ((obj: O) => T) | PropertyKey[] | string
+  query: ((obj: O) => T) | PropertyKey[] | string
 ): T {
-  return typeof selector !== 'function'
-    ? queryObjectPropPath<T>(obj, selector)
-    : selector(obj);
+  return typeof query !== 'function'
+    ? queryObjectPropPath<T>(obj, query)
+    : query(obj);
 }
