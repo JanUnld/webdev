@@ -13,7 +13,7 @@
         "assets": ["packages/stdlib/*.md"]
       }
     },
-    "build-docs": {
+    "doc": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "cwd": "packages/stdlib",

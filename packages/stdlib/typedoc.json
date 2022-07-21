@@ -1,7 +1,11 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "out": "../../dist/docs/stdlib",
+  "out": "../../docs/stdlib",
   "entryPoints": ["./src/index.ts"],
   "hideGenerator": true,
-  "excludeInternal": true
+  "excludeInternal": true,
+  "disableSources": true,
+  "githubPages": false,
+  "plugin": ["typedoc-plugin-markdown"],
+  "hideBreadcrumbs": true
 }

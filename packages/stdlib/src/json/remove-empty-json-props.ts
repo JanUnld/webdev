@@ -4,14 +4,10 @@ export type RemoveEmptyJsonPropTarget =
   | 'emptyObject'
   | 'nullOrUndefined';
 
-export interface RemoveEmptyJsonPropOptions {
-  ignore?: Array<RemoveEmptyJsonPropTarget> | RemoveEmptyJsonPropTarget;
-}
-
 /**
  * Removes all "empty" properties from the given json object and returns the "compressed" value.
  * The "empty" condition is given for any `null`, `undefined`, empty string, array or object
- * value, given it is not ignored by the {@link RemoveEmptyJsonPropOptions.ignore} option
+ * value, given it is not ignored
  *
  * @example ```typescript
  * removeEmptyJsonProps({
@@ -30,7 +26,7 @@ export interface RemoveEmptyJsonPropOptions {
  */
 export function removeEmptyJsonProps<T>(
   objOrArray: T,
-  options?: RemoveEmptyJsonPropOptions
+  options?: { ignore?: RemoveEmptyJsonPropTarget[] | RemoveEmptyJsonPropTarget }
 ): Partial<T> {
   const ignore = options?.ignore;
   const isArrayAcc = Array.isArray(objOrArray);
@@ -57,7 +53,7 @@ export function removeEmptyJsonProps<T>(
 /** @internal */
 function mayRemoveJsonProp(
   value: any,
-  options?: RemoveEmptyJsonPropOptions
+  options?: { ignore?: RemoveEmptyJsonPropTarget[] | RemoveEmptyJsonPropTarget }
 ): boolean {
   const ignore = options?.ignore;
 

@@ -7,7 +7,7 @@
  *   pattern: 'HH:mm',
  *   tokens: {
  *     HH: d => d?.getHours(),
- *     mm: d => d?.getMinutes()
+ *     mm: d => d?.getMinutes(),
  *     // property keys do support regular expressions
  *     "s{2}": d => d?.getSeconds()
  *   }

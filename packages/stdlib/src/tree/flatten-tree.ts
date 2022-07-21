@@ -1,14 +1,14 @@
 import { omit } from '../reflection/omit';
 
-export interface TreeNode {
+export type TreeNode = {
   children?: TreeNode[];
-}
+};
 
-export interface FlatTreeNode {
+export type FlatTreeNode = {
   level: number;
   hasChildren: boolean;
   childCount?: number;
-}
+};
 
 export function flattenTree<T = unknown>(
   tree: TreeNode | TreeNode[],
