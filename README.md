@@ -1,6 +1,7 @@
-# Web Standard Library Development Kit
+# Web Standard Libraries
 
-A collection of opinionated standard libraries for the web technology ecosystem, powered by [Nx](./NX.md).
+A collection of personal standard libraries for the web technology ecosystem, powered by [Nx](./NX.md) and publically
+distributed using [Npm](https://npmjs.com).
 
 ## Packages
 
