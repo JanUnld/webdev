@@ -1,4 +1,4 @@
-import { queryObjectProp } from '../../reflection/query-object-prop';
+import { queryProp } from '../../json/query-prop';
 import { format as _format } from '../format';
 
 /**
@@ -37,7 +37,7 @@ import { format as _format } from '../format';
  */
 export function formatFullName<T>(
   obj: T,
-  format: string = 'full',
+  format = 'full',
   options?: {
     firstName?: ((obj: T) => string) | PropertyKey[] | string;
     lastName?: ((obj: T) => string) | PropertyKey[] | string;
@@ -45,12 +45,14 @@ export function formatFullName<T>(
     fallback?: T;
   }
 ): string {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const {
     firstName = (o: any) => o?.firstName ?? o?.first_name,
     lastName = (o: any) => o?.lastName ?? o?.last_name,
     title = (o: any) => o.title,
     fallback,
   } = options ?? {};
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   switch (format) {
     case 'short':
@@ -71,15 +73,15 @@ export function formatFullName<T>(
     pattern: format,
     tokens: {
       // first first-name letter including a dot:
-      ff: (o: T) => `${queryObjectProp(o, firstName)?.charAt(0) ?? ''}.`,
+      ff: (o: T) => `${queryProp<string, T>(o, firstName)?.charAt(0) ?? ''}.`,
       // first last-name letter including a dot:
-      ll: (o: T) => `${queryObjectProp(o, lastName)?.charAt(0) ?? ''}.`,
+      ll: (o: T) => `${queryProp<string, T>(o, lastName)?.charAt(0) ?? ''}.`,
       // first name:
-      FF: (o) => `${queryObjectProp(o, firstName) ?? ''}`,
+      FF: (o) => `${queryProp(o, firstName) ?? ''}`,
       // last name:
-      LL: (o) => `${queryObjectProp(o, lastName) ?? ''}`,
+      LL: (o) => `${queryProp(o, lastName) ?? ''}`,
       // title
-      TT: (o) => `${queryObjectProp(o, title) ?? ''}`,
+      TT: (o) => `${queryProp(o, title) ?? ''}`,
     },
     fallback,
   });

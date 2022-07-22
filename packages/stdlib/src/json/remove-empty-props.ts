@@ -1,4 +1,5 @@
-export type RemoveEmptyJsonPropTarget =
+/** Describes a type of empty property value that might appear within an object */
+export type EmptyJsonPropType =
   | 'emptyString'
   | 'emptyArray'
   | 'emptyObject'
@@ -6,8 +7,7 @@ export type RemoveEmptyJsonPropTarget =
 
 /**
  * Removes all "empty" properties from the given json object and returns the "compressed" value.
- * The "empty" condition is given for any `null`, `undefined`, empty string, array or object
- * value, given it is not ignored
+ * The "empty" condition is given for {@link EmptyJsonPropType}
  *
  * @example ```typescript
  * removeEmptyJsonProps({
@@ -19,41 +19,56 @@ export type RemoveEmptyJsonPropTarget =
  * }, { ignore: 'emptyString' }) // { emptyStr: '', foo: 'bar' }
  * ```
  *
- * @param objOrArray The schema object value that should be "compressed"
- * @param options Optional configuration interface to ignore individual remove cases
+ * @param json The object or array value that should be "compressed"
+ * @param options Optional configuration interface
+ * @param options.ignore Excludes one or more empty property cases from being removed
+ * @param options.recursive May disable the default recursion of this function
  *
  * @remarks Prototype inheritance won't be preserved, please use JSON only!
  */
-export function removeEmptyJsonProps<T>(
-  objOrArray: T,
-  options?: { ignore?: RemoveEmptyJsonPropTarget[] | RemoveEmptyJsonPropTarget }
+export function removeEmptyProps<T>(
+  json: T,
+  options?: {
+    ignore?: EmptyJsonPropType[] | EmptyJsonPropType;
+    recursive?: boolean;
+  }
 ): Partial<T> {
-  const ignore = options?.ignore;
-  const isArrayAcc = Array.isArray(objOrArray);
+  const isArray = Array.isArray(json);
   return (
-    objOrArray != null &&
-    Object.entries(objOrArray).reduce(
-      (accObjOrArray: unknown, [key, value]) => {
+    json &&
+    Object.entries(json).reduce(
+      (objOrArray: unknown, [key, value]) => {
         // pre-check whether the value is empty and should be removed already
-        if (mayRemoveJsonProp(value, options)) return accObjOrArray;
-        // if we are dealing with a nested schema value, try to recursively remove all empty properties
-        if (Array.isArray(value) || typeof value === 'object')
-          value = removeEmptyJsonProps(value, options);
+        if (canRemoveProp(value, options)) {
+          return objOrArray;
+        }
+        // if we are dealing with a nested value, try to recursively remove all empty properties
+        if (
+          options?.recursive === false &&
+          (Array.isArray(value) || typeof value === 'object')
+        ) {
+          value = removeEmptyProps(value, options);
+        }
         // re check whether the value should be removed after the recursive resolution
-        if (mayRemoveJsonProp(value, options)) return accObjOrArray;
+        if (canRemoveProp(value, options)) {
+          return objOrArray;
+        }
         // finally re-construct the array or object accumulator value
-        if (isArrayAcc) return [...(accObjOrArray as any[]), value];
-        else return { ...(accObjOrArray as any), [key]: value };
+        if (isArray) {
+          return [...(objOrArray as any[]), value];
+        } else {
+          return { ...(objOrArray as any), [key]: value };
+        }
       },
-      isArrayAcc ? [] : {}
+      isArray ? [] : {}
     )
   );
 }
 
 /** @internal */
-function mayRemoveJsonProp(
-  value: any,
-  options?: { ignore?: RemoveEmptyJsonPropTarget[] | RemoveEmptyJsonPropTarget }
+function canRemoveProp(
+  value: unknown,
+  options?: { ignore?: EmptyJsonPropType[] | EmptyJsonPropType }
 ): boolean {
   const ignore = options?.ignore;
 

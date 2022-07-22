@@ -1,18 +1,18 @@
-# Module: string
+# Module: String
 
 ## Table of contents
 
 ### Functions
 
-- [format](string.md#format)
-- [formatFullName](string.md#formatfullname)
-- [formatPostalAddress](string.md#formatpostaladdress)
+- [format](String.md#format)
+- [formatFullName](String.md#formatfullname)
+- [formatPostalAddress](String.md#formatpostaladdress)
 
 ## Functions
 
 ### format
 
-▸ **format**<`T`\>(`value`, `options`): `string`
+**format**<`T`\>(`value`, `options`): `string`
 
 Formats an object into a human-readable string value based on the desired options. Options may customize the format
 as well as the tokens that shall be used within the format.
@@ -55,7 +55,7 @@ format(date, {
 
 ### formatFullName
 
-▸ **formatFullName**<`T`\>(`obj`, `format?`, `options?`): `string`
+**formatFullName**<`T`\>(`obj`, `format?`, `options?`): `string`
 
 Formats any object containing name information into a string. The string format can be provided
 using the following tokens. If no format is present the pipe will default to "full". Additionally
@@ -115,7 +115,7 @@ formatFullName(obj, 'TT ff LL'); // Dr. J. Doe
 
 ### formatPostalAddress
 
-▸ **formatPostalAddress**<`T`\>(`obj`, `format?`, `options?`): `string`
+**formatPostalAddress**<`T`\>(`obj`, `format?`, `options?`): `string`
 
 Formats any object containing address information into a string. The string format can be provided
 using the following tokens. If no format is present the pipe will default to "full". Additionally

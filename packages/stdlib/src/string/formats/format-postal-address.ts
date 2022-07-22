@@ -1,4 +1,4 @@
-import { queryObjectProp } from '../../reflection/query-object-prop';
+import { queryProp } from '../../json/query-prop';
 import { format as _format } from '../format';
 
 /**
@@ -35,7 +35,7 @@ import { format as _format } from '../format';
  */
 export function formatPostalAddress<T>(
   obj: T,
-  format: string = 'full',
+  format = 'full',
   options?: {
     street?: ((obj: T) => string) | PropertyKey[] | string;
     streetNumber?: ((obj: T) => string) | PropertyKey[] | string;
@@ -45,6 +45,7 @@ export function formatPostalAddress<T>(
     fallback?: T;
   }
 ): string {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const optimisticStreetSplit = (v: any) => v?.toString().split(/\s+/);
   const {
     street = (o: any) => o.streetName ?? optimisticStreetSplit(o.street)?.[0],
@@ -55,6 +56,7 @@ export function formatPostalAddress<T>(
     zip = (o: any) => o.zipCode ?? o.zip,
     fallback,
   } = options ?? {};
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   switch (format) {
     case 'street':
@@ -71,11 +73,11 @@ export function formatPostalAddress<T>(
   return _format(obj, {
     pattern: format,
     tokens: {
-      sss: (o) => queryObjectProp(o, street),
-      NN: (o) => queryObjectProp(o, streetNumber),
-      aaa: (o) => queryObjectProp(o, additional),
-      ccc: (o) => queryObjectProp(o, city),
-      ZZ: (o) => queryObjectProp(o, zip),
+      sss: (o) => queryProp(o, street),
+      NN: (o) => queryProp(o, streetNumber),
+      aaa: (o) => queryProp(o, additional),
+      ccc: (o) => queryProp(o, city),
+      ZZ: (o) => queryProp(o, zip),
     },
     fallback,
   }).replace(/\s+,/, ',');

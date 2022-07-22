@@ -1,13 +1,23 @@
-import { parseSortOrder, SortOrder } from './sort-order';
+import { SortOrder } from './sort-order';
 
-export type SortComparator<T> = (a: T, b: T) => number;
-
-export class Sort<T = any> {
+/** Basic sort mechanism implementation meant to be extended. May also be used as-is */
+export class Sort<T> {
+  /**
+   * @param comparator The comparator function to be used to sort
+   * @param defaultOrder The default order the comparator function implicitly enforces
+   */
   constructor(
-    public comparator: SortComparator<T>,
+    public comparator: (a: T, b: T) => number,
     public defaultOrder?: SortOrder
   ) {}
 
+  /**
+   * Sorts the input data based on the set {@link comparator} and {@link defaultOrder}. Ordering may also
+   * be customized in line using the {@link order} parameter
+   *
+   * @param data The desired data to be sorted
+   * @param order The order to enforce during the sort
+   */
   apply(
     data: Iterable<T>,
     order: SortOrder | undefined = this.defaultOrder
@@ -19,17 +29,5 @@ export class Sort<T = any> {
     } else {
       return sortedData.reverse();
     }
-  }
-}
-
-export function parseSortState(str: string) {
-  if (str == null) return null;
-  else {
-    const [key, order] = str.split(',');
-    if (!key.trim() || !order?.trim()) return;
-    return {
-      key,
-      order: parseSortOrder(order),
-    };
   }
 }

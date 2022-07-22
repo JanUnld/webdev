@@ -1,77 +1,97 @@
 # Class: Sort<T\>
 
-[sort](../modules/sort.md).Sort
+[Sort](../modules/Sort.md).Sort
+
+Basic sort mechanism implementation meant to be extended. May also be used as-is
 
 ## Type parameters
 
-| Name | Type  |
-| :--- | :---- |
-| `T`  | `any` |
+| Name |
+| :--- |
+| `T`  |
 
 ## Hierarchy
 
 - **`Sort`**
 
-  ↳ [`PropSort`](sort.PropSort.md)
+  ↳ [`PropSort`](Sort.PropSort.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](sort.Sort.md#constructor)
+- [constructor](Sort.Sort.md#constructor)
 
 ### Properties
 
-- [comparator](sort.Sort.md#comparator)
-- [defaultOrder](sort.Sort.md#defaultorder)
+- [comparator](Sort.Sort.md#comparator)
+- [defaultOrder](Sort.Sort.md#defaultorder)
 
 ### Methods
 
-- [apply](sort.Sort.md#apply)
+- [apply](Sort.Sort.md#apply)
 
 ## Constructors
 
 ### constructor
 
-• **new Sort**<`T`\>(`comparator`, `defaultOrder?`)
+**new Sort**<`T`\>(`comparator`, `defaultOrder?`)
 
 #### Type parameters
 
-| Name | Type  |
-| :--- | :---- |
-| `T`  | `any` |
+| Name |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name            | Type                                                        |
-| :-------------- | :---------------------------------------------------------- |
-| `comparator`    | [`SortComparator`](../modules/sort.md#sortcomparator)<`T`\> |
-| `defaultOrder?` | [`SortOrder`](../modules/sort.md#sortorder)                 |
+| Name            | Type                                        | Description                                                   |
+| :-------------- | :------------------------------------------ | :------------------------------------------------------------ |
+| `comparator`    | (`a`: `T`, `b`: `T`) => `number`            | The comparator function to be used to sort                    |
+| `defaultOrder?` | [`SortOrder`](../modules/Sort.md#sortorder) | The default order the comparator function implicitly enforces |
 
 ## Properties
 
 ### comparator
 
-• **comparator**: [`SortComparator`](../modules/sort.md#sortcomparator)<`T`\>
+**comparator**: (`a`: `T`, `b`: `T`) => `number`
+
+#### Type declaration
+
+(`a`, `b`): `number`
+
+##### Parameters
+
+| Name | Type |
+| :--- | :--- |
+| `a`  | `T`  |
+| `b`  | `T`  |
+
+##### Returns
+
+`number`
 
 ---
 
 ### defaultOrder
 
-• `Optional` **defaultOrder**: [`SortOrder`](../modules/sort.md#sortorder)
+`Optional` **defaultOrder**: [`SortOrder`](../modules/Sort.md#sortorder)
 
 ## Methods
 
 ### apply
 
-▸ **apply**(`data`, `order?`): `T`[]
+**apply**(`data`, `order?`): `T`[]
+
+Sorts the input data based on the set [comparator](Sort.Sort.md#comparator) and [defaultOrder](Sort.Sort.md#defaultorder). Ordering may also
+be customized in line using the order parameter
 
 #### Parameters
 
-| Name    | Type                                                       |
-| :------ | :--------------------------------------------------------- |
-| `data`  | `Iterable`<`T`\>                                           |
-| `order` | `undefined` \| [`SortOrder`](../modules/sort.md#sortorder) |
+| Name    | Type                                                       | Description                          |
+| :------ | :--------------------------------------------------------- | :----------------------------------- |
+| `data`  | `Iterable`<`T`\>                                           | The desired data to be sorted        |
+| `order` | `undefined` \| [`SortOrder`](../modules/Sort.md#sortorder) | The order to enforce during the sort |
 
 #### Returns
 

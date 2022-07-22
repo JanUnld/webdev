@@ -1,16 +1,29 @@
 # Class: PropSort<T\>
 
-[sort](../modules/sort.md).PropSort
+[Sort](../modules/Sort.md).PropSort
+
+Basic property sort mechanism comparing the raw values returned from the [selector](Sort.PropSort.md#selector). The
+selector may be specified as either a selector function or a property path descriptor
+
+**`Example`**
+
+```typescript
+new PropSort('foo.bar').apply([{ foo: { bar: 'z' } }, { foo: { bar: 'a' } }]);
+// [
+//   { foo: { bar: 'a' } },
+//   { foo: { bar: 'z' } }
+// ]
+```
 
 ## Type parameters
 
-| Name | Type  |
-| :--- | :---- |
-| `T`  | `any` |
+| Name |
+| :--- |
+| `T`  |
 
 ## Hierarchy
 
-- [`Sort`](sort.Sort.md)<`T`\>
+- [`Sort`](Sort.Sort.md)<`T`\>
 
   ↳ **`PropSort`**
 
@@ -18,78 +31,96 @@
 
 ### Constructors
 
-- [constructor](sort.PropSort.md#constructor)
+- [constructor](Sort.PropSort.md#constructor)
 
 ### Properties
 
-- [comparator](sort.PropSort.md#comparator)
-- [defaultOrder](sort.PropSort.md#defaultorder)
-- [selector](sort.PropSort.md#selector)
+- [comparator](Sort.PropSort.md#comparator)
+- [defaultOrder](Sort.PropSort.md#defaultorder)
+- [selector](Sort.PropSort.md#selector)
 
 ### Methods
 
-- [apply](sort.PropSort.md#apply)
+- [apply](Sort.PropSort.md#apply)
 
 ## Constructors
 
 ### constructor
 
-• **new PropSort**<`T`\>(`selector`)
+**new PropSort**<`T`\>(`selector`)
 
 #### Type parameters
 
-| Name | Type  |
-| :--- | :---- |
-| `T`  | `any` |
+| Name |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name       | Type                                               |
-| :--------- | :------------------------------------------------- |
-| `selector` | `string` \| `PropertyKey`[] \| (`o`: `T`) => `any` |
+| Name       | Type                                                   | Description                                                                |
+| :--------- | :----------------------------------------------------- | :------------------------------------------------------------------------- |
+| `selector` | `string` \| `PropertyKey`[] \| (`o`: `T`) => `unknown` | Either a selector function or property path to resolve values when sorting |
 
 #### Overrides
 
-[Sort](sort.Sort.md).[constructor](sort.Sort.md#constructor)
+[Sort](Sort.Sort.md).[constructor](Sort.Sort.md#constructor)
 
 ## Properties
 
 ### comparator
 
-• **comparator**: [`SortComparator`](../modules/sort.md#sortcomparator)<`T`\>
+**comparator**: (`a`: `T`, `b`: `T`) => `number`
+
+#### Type declaration
+
+(`a`, `b`): `number`
+
+##### Parameters
+
+| Name | Type |
+| :--- | :--- |
+| `a`  | `T`  |
+| `b`  | `T`  |
+
+##### Returns
+
+`number`
 
 #### Inherited from
 
-[Sort](sort.Sort.md).[comparator](sort.Sort.md#comparator)
+[Sort](Sort.Sort.md).[comparator](Sort.Sort.md#comparator)
 
 ---
 
 ### defaultOrder
 
-• `Optional` **defaultOrder**: [`SortOrder`](../modules/sort.md#sortorder)
+`Optional` **defaultOrder**: [`SortOrder`](../modules/Sort.md#sortorder)
 
 #### Inherited from
 
-[Sort](sort.Sort.md).[defaultOrder](sort.Sort.md#defaultorder)
+[Sort](Sort.Sort.md).[defaultOrder](Sort.Sort.md#defaultorder)
 
 ---
 
 ### selector
 
-• `Readonly` **selector**: `string` \| `PropertyKey`[] \| (`o`: `T`) => `any`
+**selector**: `string` \| `PropertyKey`[] \| (`o`: `T`) => `unknown`
 
 ## Methods
 
 ### apply
 
-▸ **apply**(`data`, `order?`): `T`[]
+**apply**(`data`, `order?`): `T`[]
+
+Sorts the input data based on the set [comparator](Sort.PropSort.md#comparator) and [defaultOrder](Sort.PropSort.md#defaultorder). Ordering may also
+be customized in line using the order parameter
 
 #### Parameters
 
-| Name    | Type                                                       |
-| :------ | :--------------------------------------------------------- |
-| `data`  | `Iterable`<`T`\>                                           |
-| `order` | `undefined` \| [`SortOrder`](../modules/sort.md#sortorder) |
+| Name    | Type                                                       | Description                          |
+| :------ | :--------------------------------------------------------- | :----------------------------------- |
+| `data`  | `Iterable`<`T`\>                                           | The desired data to be sorted        |
+| `order` | `undefined` \| [`SortOrder`](../modules/Sort.md#sortorder) | The order to enforce during the sort |
 
 #### Returns
 
@@ -97,4 +128,4 @@
 
 #### Inherited from
 
-[Sort](sort.Sort.md).[apply](sort.Sort.md#apply)
+[Sort](Sort.Sort.md).[apply](Sort.Sort.md#apply)

@@ -1,48 +1,67 @@
-# Module: tree
+# Module: Tree
 
 ## Table of contents
 
 ### Type Aliases
 
-- [FlatTreeNode](tree.md#flattreenode)
-- [TreeNode](tree.md#treenode)
+- [FlatTreeNode](Tree.md#flattreenode)
+- [TreeNode](Tree.md#treenode)
 
 ### Functions
 
-- [flattenTree](tree.md#flattentree)
-- [restoreFlatTree](tree.md#restoreflattree)
+- [flattenTree](Tree.md#flattentree)
+- [restoreFlatTree](Tree.md#restoreflattree)
 
 ## Type Aliases
 
 ### FlatTreeNode
 
-Ƭ **FlatTreeNode**: `Object`
+**FlatTreeNode**: `Object`
+
+Flat tree node representation requiring only a level and a child count number
 
 #### Type declaration
 
-| Name          | Type      |
-| :------------ | :-------- |
-| `childCount?` | `number`  |
-| `hasChildren` | `boolean` |
-| `level`       | `number`  |
+| Name         | Type     |
+| :----------- | :------- |
+| `childCount` | `number` |
+| `level`      | `number` |
 
 ---
 
 ### TreeNode
 
-Ƭ **TreeNode**: `Object`
+**TreeNode**: `Object`
+
+Nested tree node representation consisting only of children
 
 #### Type declaration
 
 | Name        | Type                             |
 | :---------- | :------------------------------- |
-| `children?` | [`TreeNode`](tree.md#treenode)[] |
+| `children?` | [`TreeNode`](Tree.md#treenode)[] |
 
 ## Functions
 
 ### flattenTree
 
-▸ **flattenTree**<`T`\>(`tree`, `baseLevel?`): [`FlatTreeNode`](tree.md#flattreenode) & `T`[]
+**flattenTree**<`T`\>(`tree`, `baseLevel?`): [`FlatTreeNode`](Tree.md#flattreenode) & `T`[]
+
+Flattens a tree structure based on a predefined [TreeNode](Tree.md#treenode) interface
+
+**`Example`**
+
+```typescript
+// |- root node
+//   |- child node
+//   |- child node
+flattenTree({ children: [{}, {}] });
+// [
+//   { level: 0, childCount: 2 },
+//   { level: 1, childCount: 0 },
+//   { level: 1, childCount: 0 },
+// ]
+```
 
 #### Type parameters
 
@@ -52,20 +71,33 @@
 
 #### Parameters
 
-| Name         | Type                                                               |
-| :----------- | :----------------------------------------------------------------- |
-| `tree`       | [`TreeNode`](tree.md#treenode) \| [`TreeNode`](tree.md#treenode)[] |
-| `baseLevel?` | `number`                                                           |
+| Name         | Type                                                               | Description                               |
+| :----------- | :----------------------------------------------------------------- | :---------------------------------------- |
+| `tree`       | [`TreeNode`](Tree.md#treenode) \| [`TreeNode`](Tree.md#treenode)[] | The tree structure to be flattened        |
+| `baseLevel?` | `number`                                                           | The base level to be used when flattening |
 
 #### Returns
 
-[`FlatTreeNode`](tree.md#flattreenode) & `T`[]
+[`FlatTreeNode`](Tree.md#flattreenode) & `T`[]
 
 ---
 
 ### restoreFlatTree
 
-▸ **restoreFlatTree**<`T`\>(`flatTree`): [`TreeNode`](tree.md#treenode) & `T`[]
+**restoreFlatTree**<`T`\>(`flatTree`): [`TreeNode`](Tree.md#treenode) & `T`[]
+
+Restores a flat tree structure usually returned from a [flattenTree](Tree.md#flattentree) operation
+
+**`Example`**
+
+```typescript
+restoreFlatTree([
+  { level: 0, childCount: 2 },
+  { level: 1, childCount: 0 },
+  { level: 1, childCount: 0 },
+]);
+// { children: [ {}, {} ] }
+```
 
 #### Type parameters
 
@@ -75,10 +107,10 @@
 
 #### Parameters
 
-| Name       | Type                                     |
-| :--------- | :--------------------------------------- |
-| `flatTree` | [`FlatTreeNode`](tree.md#flattreenode)[] |
+| Name       | Type                                     | Description                                                       |
+| :--------- | :--------------------------------------- | :---------------------------------------------------------------- |
+| `flatTree` | [`FlatTreeNode`](Tree.md#flattreenode)[] | The flat tree structure to be restored to a nested tree structure |
 
 #### Returns
 
-[`TreeNode`](tree.md#treenode) & `T`[]
+[`TreeNode`](Tree.md#treenode) & `T`[]

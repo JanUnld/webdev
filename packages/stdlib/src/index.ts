@@ -1,3 +1,4 @@
+export * from './collection';
 export * from './json';
 export * from './reflection';
 export * from './sort';

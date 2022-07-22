@@ -4,9 +4,10 @@
 
 ### Modules
 
-- [json](modules/json.md)
-- [reflection](modules/reflection.md)
-- [sort](modules/sort.md)
-- [string](modules/string.md)
-- [tree](modules/tree.md)
-- [url](modules/url.md)
+- [Collection](modules/Collection.md)
+- [JSON](modules/JSON.md)
+- [Reflection](modules/Reflection.md)
+- [Sort](modules/Sort.md)
+- [String](modules/String.md)
+- [Tree](modules/Tree.md)
+- [URL](modules/URL.md)

@@ -8,40 +8,43 @@
  * queryObjectPropPath(obj, [ 0, 'prop1', 1, 'prop2' ]);
  * ```
  *
- * @param obj The targeted object to resolve the path from
+ * @param json The targeted object or array to resolve the path from
  * @param path The desired property path as explicit array or dot (.) separated string
  */
-export function queryObjectPropPath<T = unknown>(
-  obj: unknown,
+export function queryPropPath<R, T>(
+  json: T,
   path: PropertyKey[] | string
-): T {
+): R | null {
+  if (json == null) {
+    return null;
+  }
   // make sure we are dealing with an array of property keys
   path = (typeof path === 'string' ? path.split('.') : path) || [];
   // reduce the given keys one after the other to finally reach the desired property
-  return (obj != null &&
-    path.reduce(
-      // @ts-ignore innerObj is of type `unknown`
-      (innerObj, nextProperty) => innerObj?.[nextProperty],
-      obj
-    )) as T;
+  return (
+    (path.reduce(
+      (innerObj, nextProperty) => (innerObj as never)?.[nextProperty],
+      json
+    ) as unknown as R) ?? null
+  );
 }
 
 /**
- * Queries an object property value either by using a selector function or a path as described by {@link queryObjectPropPath}
+ * Queries an object property value either by using a selector function or a path as described by {@link queryPropPath}
  *
  * @example ```typescript
  * queryObjectProp(obj, '0.prop1.1.prop2');
  * queryObjectProp(obj, [ 0, 'prop1', 1, 'prop2' ]);
  * queryObjectProp(obj, (o) => o?.[0]?.prop1?.[1]?.prop2);
  * ```
- * @param obj The targeted object to resolve the path from
+ * @param json The targeted object or array to resolve the path from
  * @param query The desired query function or property path as explicit array or dot (.) separated string
  */
-export function queryObjectProp<T = unknown, O = unknown>(
-  obj: O,
-  query: ((obj: O) => T) | PropertyKey[] | string
-): T {
+export function queryProp<R, T>(
+  json: T,
+  query: ((obj: T) => unknown) | PropertyKey[] | string
+): R | null {
   return typeof query !== 'function'
-    ? queryObjectPropPath<T>(obj, query)
-    : query(obj);
+    ? queryPropPath<R, T>(json, query)
+    : (query(json) as unknown as R) ?? null;
 }

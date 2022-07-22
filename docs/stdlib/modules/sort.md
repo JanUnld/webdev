@@ -1,144 +1,104 @@
-# Module: sort
+# Module: Sort
 
 ## Table of contents
 
 ### Classes
 
-- [PropSort](../classes/sort.PropSort.md)
-- [Sort](../classes/sort.Sort.md)
+- [PropSort](../classes/Sort.PropSort.md)
+- [Sort](../classes/Sort.Sort.md)
 
 ### Type Aliases
 
-- [SortComparator](sort.md#sortcomparator)
-- [SortOrder](sort.md#sortorder)
+- [SortOrder](Sort.md#sortorder)
 
 ### Functions
 
-- [compareObjectProps](sort.md#compareobjectprops)
-- [isSortOrder](sort.md#issortorder)
-- [parseSortOrder](sort.md#parsesortorder)
-- [parseSortState](sort.md#parsesortstate)
-- [reverseSortOrder](sort.md#reversesortorder)
+- [isSortOrder](Sort.md#issortorder)
+- [parseSortOrder](Sort.md#parsesortorder)
+- [reverseSortOrder](Sort.md#reversesortorder)
 
 ## Type Aliases
 
-### SortComparator
-
-Ƭ **SortComparator**<`T`\>: (`a`: `T`, `b`: `T`) => `number`
-
-#### Type parameters
-
-| Name |
-| :--- |
-| `T`  |
-
-#### Type declaration
-
-▸ (`a`, `b`): `number`
-
-##### Parameters
-
-| Name | Type |
-| :--- | :--- |
-| `a`  | `T`  |
-| `b`  | `T`  |
-
-##### Returns
-
-`number`
-
----
-
 ### SortOrder
 
-Ƭ **SortOrder**: `"ascending"` \| `"descending"`
+**SortOrder**: `"ascending"` \| `"descending"`
+
+The order in which sorting will happen, either ascending or descending
 
 ## Functions
 
-### compareObjectProps
-
-▸ **compareObjectProps**<`T`\>(`selector`, `a`, `b`): `number`
-
-#### Type parameters
-
-| Name | Type  |
-| :--- | :---- |
-| `T`  | `any` |
-
-#### Parameters
-
-| Name       | Type                                               |
-| :--------- | :------------------------------------------------- |
-| `selector` | `string` \| `PropertyKey`[] \| (`o`: `T`) => `any` |
-| `a`        | `T`                                                |
-| `b`        | `T`                                                |
-
-#### Returns
-
-`number`
-
----
-
 ### isSortOrder
 
-▸ **isSortOrder**(`value`, `order?`): value is SortOrder
+**isSortOrder**(`value`, `order?`): `boolean`
+
+Identifies whether a string value is a [SortOrder](Sort.md#sortorder) value or explicitly checks whether
+the value is a specific [SortOrder](Sort.md#sortorder) using the order parameter
+
+**`Example`**
+
+```typescript
+isSortOrder('asc'); // true
+isSortOrder('asc', 'ascending'); // true
+isSortOrder('asc', 'descending'); // false
+```
 
 #### Parameters
 
-| Name     | Type                             |
-| :------- | :------------------------------- |
-| `value`  | `string`                         |
-| `order?` | [`SortOrder`](sort.md#sortorder) |
+| Name     | Type                             | Description                                      |
+| :------- | :------------------------------- | :----------------------------------------------- |
+| `value`  | `string`                         | The string value to be checked                   |
+| `order?` | [`SortOrder`](Sort.md#sortorder) | Optional order value to explicitly check against |
 
 #### Returns
 
-value is SortOrder
+`boolean`
 
 ---
 
 ### parseSortOrder
 
-▸ **parseSortOrder**(`str`, `fallback?`): `undefined` \| [`SortOrder`](sort.md#sortorder)
+**parseSortOrder**(`str`, `fallback?`): `undefined` \| [`SortOrder`](Sort.md#sortorder)
+
+Parses a [SortOrder](Sort.md#sortorder) value based on a string input
+
+**`Example`**
+
+```typescript
+parseSortOrder('asc'); // 'ascending'
+```
 
 #### Parameters
 
-| Name        | Type                             |
-| :---------- | :------------------------------- |
-| `str`       | `string`                         |
-| `fallback?` | [`SortOrder`](sort.md#sortorder) |
+| Name        | Type                             | Description                                                                 |
+| :---------- | :------------------------------- | :-------------------------------------------------------------------------- |
+| `str`       | `string`                         | The string value to be parsed                                               |
+| `fallback?` | [`SortOrder`](Sort.md#sortorder) | The fallback [SortOrder](Sort.md#sortorder) value to use when parsing fails |
 
 #### Returns
 
-`undefined` \| [`SortOrder`](sort.md#sortorder)
-
----
-
-### parseSortState
-
-▸ **parseSortState**(`str`): `undefined` \| `null` \| { `key`: `string` ; `order`: `undefined` \| [`SortOrder`](sort.md#sortorder) }
-
-#### Parameters
-
-| Name  | Type     |
-| :---- | :------- |
-| `str` | `string` |
-
-#### Returns
-
-`undefined` \| `null` \| { `key`: `string` ; `order`: `undefined` \| [`SortOrder`](sort.md#sortorder) }
+`undefined` \| [`SortOrder`](Sort.md#sortorder)
 
 ---
 
 ### reverseSortOrder
 
-▸ **reverseSortOrder**(`order`): [`SortOrder`](sort.md#sortorder)
+**reverseSortOrder**(`order`): [`SortOrder`](Sort.md#sortorder)
+
+Reverses a [SortOrder](Sort.md#sortorder) value
+
+**`Example`**
+
+```typescript
+reverseSortOrder('ascending'); // 'descending'
+reverseSortOrder('descending'); // 'ascending'
+```
 
 #### Parameters
 
 | Name    | Type                             |
 | :------ | :------------------------------- |
-| `order` | [`SortOrder`](sort.md#sortorder) |
+| `order` | [`SortOrder`](Sort.md#sortorder) |
 
 #### Returns
 
-[`SortOrder`](sort.md#sortorder)
+[`SortOrder`](Sort.md#sortorder)

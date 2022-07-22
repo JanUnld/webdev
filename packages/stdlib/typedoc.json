@@ -1,11 +1,13 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+  "tsconfig": "./tsconfig.doc.json",
   "out": "../../docs/stdlib",
-  "entryPoints": ["./src/!(index).ts"],
+  "entryPoints": ["./src/*"],
   "hideGenerator": true,
   "excludeInternal": true,
   "disableSources": true,
   "githubPages": false,
   "plugin": ["typedoc-plugin-markdown"],
-  "hideBreadcrumbs": true
+  "hideBreadcrumbs": true,
+  "hideMembersSymbol": true
 }
