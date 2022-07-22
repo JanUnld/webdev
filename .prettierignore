@@ -4,3 +4,4 @@
 /coverage
 
 /README.md
+/packages/**/README.md

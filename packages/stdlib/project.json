@@ -10,7 +10,10 @@
         "outputPath": "dist/packages/stdlib",
         "main": "packages/stdlib/src/index.ts",
         "tsConfig": "packages/stdlib/tsconfig.lib.json",
-        "assets": ["packages/stdlib/*.md"]
+        "assets": [
+          "packages/stdlib/*.md",
+          "LICENSE"
+        ]
       }
     },
     "doc": {
