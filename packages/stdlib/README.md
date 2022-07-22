@@ -1,4 +1,4 @@
-<img alt="Title image" style="height:200px;float:right" src="https://raw.githubusercontent.com/JanUnld/janunld/develop/personal-space-show.gif">
+<img alt="Title image" align="right" height="200px" src="https://raw.githubusercontent.com/JanUnld/janunld/develop/personal-space-show.gif">
 
 # Personal Standard Library
 
