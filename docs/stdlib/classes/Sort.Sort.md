@@ -1,3 +1,5 @@
+[@janunld/stdlib](../README.md) / [Exports](../modules.md) / [Sort](../modules/Sort.md) / Sort
+
 # Class: Sort<T\>
 
 [Sort](../modules/Sort.md).Sort

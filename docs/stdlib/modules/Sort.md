@@ -1,3 +1,5 @@
+[@janunld/stdlib](../README.md) / [Exports](../modules.md) / Sort
+
 # Module: Sort
 
 ## Table of contents

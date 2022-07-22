@@ -8,6 +8,5 @@
   "disableSources": true,
   "githubPages": false,
   "plugin": ["typedoc-plugin-markdown"],
-  "hideBreadcrumbs": true,
   "hideMembersSymbol": true
 }

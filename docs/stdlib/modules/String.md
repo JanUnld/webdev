@@ -1,3 +1,5 @@
+[@janunld/stdlib](../README.md) / [Exports](../modules.md) / String
+
 # Module: String
 
 ## Table of contents

@@ -1,3 +1,5 @@
+[@janunld/stdlib](../README.md) / [Exports](../modules.md) / URL
+
 # Module: URL
 
 ## Table of contents

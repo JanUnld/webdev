@@ -1,3 +1,5 @@
+[@janunld/stdlib](README.md) / Exports
+
 # @janunld/stdlib
 
 ## Table of contents
