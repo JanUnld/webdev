@@ -1,11 +1,11 @@
-<img alt="Title image" align="right" height="200px" src="https://raw.githubusercontent.com/JanUnld/janunld/develop/personal-space-show.gif">
-
 # Personal Standard Library
 
-**[API Docs][docs] • [NPM][npm]**
+[![NPM][npm-shield]][npm] [![API Docs][docs-shield]][docs] 
 
 [docs]: ../../docs/stdlib/modules.md
+[docs-shield]: https://img.shields.io/badge/docs-typescript-blue?style=flat-square
 [npm]: https://www.npmjs.com/package/@janunld/stdlib
+[npm-shield]: https://img.shields.io/npm/v/@janunld/stdlib?color=red&style=flat-square
 
 The main goal of this package is to group together useful but quite general APIs that
 I personally find myself creating over and over again in various scenarios. 

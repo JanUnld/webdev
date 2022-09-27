@@ -10,10 +10,7 @@
         "outputPath": "dist/packages/stdlib",
         "main": "packages/stdlib/src/index.ts",
         "tsConfig": "packages/stdlib/tsconfig.lib.json",
-        "assets": [
-          "packages/stdlib/*.md",
-          "LICENSE"
-        ]
+        "assets": ["packages/stdlib/*.md", "LICENSE"]
       }
     },
     "doc": {
@@ -26,7 +23,10 @@
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs stdlib {args.ver} {args.tag}"
+        "parallel": false,
+        "commands": [
+          "node tools/scripts/publish.mjs stdlib {args.version} {args.tag}"
+        ]
       },
       "dependsOn": [
         {
@@ -48,6 +48,13 @@
       "options": {
         "jestConfig": "packages/stdlib/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "skipProjectChangelog": true
       }
     }
   },
