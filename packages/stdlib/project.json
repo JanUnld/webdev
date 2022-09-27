@@ -54,7 +54,8 @@
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "conventional",
-        "skipProjectChangelog": true
+        "skipProjectChangelog": true,
+        "tagPrefix": "${projectName}@v"
       }
     }
   },
