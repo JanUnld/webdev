@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@janunld/angular": ["packages/angular/src/index.ts"],
       "@janunld/stdlib": ["packages/stdlib/src/index.ts"]
     }
   },
