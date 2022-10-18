@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@janunld/angular": ["packages/angular/src/index.ts"],
+      "@janunld/angular/forms": ["packages/angular/forms/src/index.ts"],
       "@janunld/stdlib": ["packages/stdlib/src/index.ts"]
     }
   },

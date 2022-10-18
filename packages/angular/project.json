@@ -20,6 +20,14 @@
       },
       "defaultConfiguration": "production"
     },
+    "doc": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/angular",
+        "parallel": false,
+        "commands": ["npx typedoc --options typedoc.json", "npx typedoc --options forms/typedoc.json"]
+      }
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/angular"],
@@ -31,10 +39,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "packages/angular/**/*.ts",
-          "packages/angular/**/*.html"
-        ]
+        "lintFilePatterns": ["packages/angular/**/*.ts", "packages/angular/**/*.html"]
       }
     }
   },

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "tsconfig": "./tsconfig.doc.json",
+  "out": "../../docs/angular",
+  "entryPoints": ["./src/*"],
+  "hideGenerator": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "excludeProtected": true,
+  "excludePrivate": true,
+  "disableSources": true,
+  "githubPages": false,
+  "plugin": ["typedoc-plugin-markdown"],
+  "hideMembersSymbol": true,
+  "logLevel": "Error"
+}
