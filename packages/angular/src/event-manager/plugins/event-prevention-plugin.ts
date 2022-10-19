@@ -1,4 +1,4 @@
-import { Injectable, NgModule, Provider } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { EventListener, EventManagerPlugin, EventUnlistener } from '../event-manager-plugin';
 
@@ -37,15 +37,10 @@ export class EventPreventionPlugin extends EventManagerPlugin {
   }
 }
 
-/**
- * Holds the necessary dependency information to provide the
- * {@link EventPreventionPlugin} to any desired module context
- */
-export const EVENT_PREVENTION_PLUGIN_PROVIDER: Provider = {
-  provide: EVENT_MANAGER_PLUGINS,
-  useClass: EventPreventionPlugin,
-  multi: true,
-};
-
-@NgModule({ providers: [EVENT_PREVENTION_PLUGIN_PROVIDER] })
-export class EventPreventionPluginModule {}
+export function provideEventPreventionPlugin(): Provider {
+  return {
+    provide: EVENT_MANAGER_PLUGINS,
+    useClass: EventPreventionPlugin,
+    multi: true,
+  };
+}

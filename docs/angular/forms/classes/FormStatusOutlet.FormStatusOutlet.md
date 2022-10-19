@@ -4,9 +4,13 @@
 
 [FormStatusOutlet](../modules/FormStatusOutlet.md).FormStatusOutlet
 
+Outlet component taking care of any AbstractControl status (including
+pending validations). Error messages may be provided on each individual di
+(dependency injection) layer.
+
 ```typescript
 provideFormErrorMessages({
-  required: $localize`Required: Please enter a value`,
+  required: () => 'Required: Please enter a value',
 });
 ```
 
@@ -46,13 +50,10 @@ provideFormErrorMessages({
 ### Accessors
 
 - [control](FormStatusOutlet.FormStatusOutlet.md#control)
-- [errorInjector](FormStatusOutlet.FormStatusOutlet.md#errorinjector)
 - [pendingDef](FormStatusOutlet.FormStatusOutlet.md#pendingdef)
-- [pendingInjector](FormStatusOutlet.FormStatusOutlet.md#pendinginjector)
 - [selectedError](FormStatusOutlet.FormStatusOutlet.md#selectederror)
 - [selectedErrorMessage](FormStatusOutlet.FormStatusOutlet.md#selectederrormessage)
 - [validDef](FormStatusOutlet.FormStatusOutlet.md#validdef)
-- [validInjector](FormStatusOutlet.FormStatusOutlet.md#validinjector)
 - [validationErrors](FormStatusOutlet.FormStatusOutlet.md#validationerrors)
 - [waitForTouch](FormStatusOutlet.FormStatusOutlet.md#waitfortouch)
 
@@ -70,15 +71,15 @@ provideFormErrorMessages({
 
 #### Parameters
 
-| Name                | Type                |
-| :------------------ | :------------------ |
-| `injector`          | `Injector`          |
-| `changeDetector`    | `ChangeDetectorRef` |
-| `errorMessages`     | `FormErrorMessages` |
-| `errorComponent?`   | `any`               |
-| `pendingComponent?` | `any`               |
-| `validComponent?`   | `any`               |
-| `ngControl?`        | `NgControl`         |
+| Name                | Type                                                                       |
+| :------------------ | :------------------------------------------------------------------------- |
+| `injector`          | `Injector`                                                                 |
+| `changeDetector`    | `ChangeDetectorRef`                                                        |
+| `errorMessages`     | [`FormErrorMessages`](../interfaces/FormStatusOutlet.FormErrorMessages.md) |
+| `errorComponent?`   | `any`                                                                      |
+| `pendingComponent?` | `any`                                                                      |
+| `validComponent?`   | `any`                                                                      |
+| `ngControl?`        | `NgControl`                                                                |
 
 ## Properties
 
@@ -90,7 +91,7 @@ provideFormErrorMessages({
 
 ### errorMessages
 
-`Readonly` **errorMessages**: `FormErrorMessages`
+`Readonly` **errorMessages**: [`FormErrorMessages`](../interfaces/FormStatusOutlet.FormErrorMessages.md)
 
 ---
 
@@ -137,16 +138,6 @@ matches from different di (dependency injection) layers
 
 ---
 
-### errorInjector
-
-`get` **errorInjector**(): `Injector`
-
-#### Returns
-
-`Injector`
-
----
-
 ### pendingDef
 
 `get` **pendingDef**(): `null` \| [`FormStatusPendingDef`](FormStatusOutlet.FormStatusPendingDef.md)
@@ -154,16 +145,6 @@ matches from different di (dependency injection) layers
 #### Returns
 
 `null` \| [`FormStatusPendingDef`](FormStatusOutlet.FormStatusPendingDef.md)
-
----
-
-### pendingInjector
-
-`get` **pendingInjector**(): `Injector`
-
-#### Returns
-
-`Injector`
 
 ---
 
@@ -194,16 +175,6 @@ matches from different di (dependency injection) layers
 #### Returns
 
 `null` \| [`FormStatusValidDef`](FormStatusOutlet.FormStatusValidDef.md)
-
----
-
-### validInjector
-
-`get` **validInjector**(): `Injector`
-
-#### Returns
-
-`Injector`
 
 ---
 

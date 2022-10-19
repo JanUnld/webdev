@@ -22,4 +22,3 @@
 ### Classes
 
 - [TemplateOutlet](../classes/TemplateOutlet.TemplateOutlet.md)
-- [TemplateOutletModule](../classes/TemplateOutlet.TemplateOutletModule.md)

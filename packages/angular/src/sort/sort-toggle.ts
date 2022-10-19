@@ -1,14 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Optional,
-  Output,
-  Renderer2,
-} from '@angular/core';
+import { Directive, EventEmitter, Input, Optional, Output } from '@angular/core';
 import { SortGroup } from './sort-group';
 import { SortOrder } from '@janunld/stdlib';
 import { SortModel } from './sort-model';

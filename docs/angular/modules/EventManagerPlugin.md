@@ -7,23 +7,20 @@
 ### Classes
 
 - [EventDebouncePlugin](../classes/EventManagerPlugin.EventDebouncePlugin.md)
-- [EventDebouncePluginModule](../classes/EventManagerPlugin.EventDebouncePluginModule.md)
 - [EventListenerOptionsPlugin](../classes/EventManagerPlugin.EventListenerOptionsPlugin.md)
-- [EventListenerOptionsPluginModule](../classes/EventManagerPlugin.EventListenerOptionsPluginModule.md)
 - [EventManagerPlugin](../classes/EventManagerPlugin.EventManagerPlugin.md)
 - [EventPreventionPlugin](../classes/EventManagerPlugin.EventPreventionPlugin.md)
-- [EventPreventionPluginModule](../classes/EventManagerPlugin.EventPreventionPluginModule.md)
 
 ### Type Aliases
 
 - [EventListener](EventManagerPlugin.md#eventlistener)
 - [EventUnlistener](EventManagerPlugin.md#eventunlistener)
 
-### Variables
+### Functions
 
-- [EVENT_DEBOUNCE_PLUGIN_PROVIDER](EventManagerPlugin.md#event_debounce_plugin_provider)
-- [EVENT_LISTENER_OPTIONS_PLUGIN_PROVIDER](EventManagerPlugin.md#event_listener_options_plugin_provider)
-- [EVENT_PREVENTION_PLUGIN_PROVIDER](EventManagerPlugin.md#event_prevention_plugin_provider)
+- [provideEventDebouncePlugin](EventManagerPlugin.md#provideeventdebounceplugin)
+- [provideEventListenerOptionsPlugin](EventManagerPlugin.md#provideeventlisteneroptionsplugin)
+- [provideEventPreventionPlugin](EventManagerPlugin.md#provideeventpreventionplugin)
 
 ## Type Aliases
 
@@ -65,29 +62,32 @@
 
 `void`
 
-## Variables
+## Functions
 
-### EVENT_DEBOUNCE_PLUGIN_PROVIDER
+### provideEventDebouncePlugin
 
-`Const` **EVENT_DEBOUNCE_PLUGIN_PROVIDER**: `Provider`
+**provideEventDebouncePlugin**(): `Provider`
 
-Holds the necessary dependency information to provide the
-[EventDebouncePlugin](../classes/EventManagerPlugin.EventDebouncePlugin.md) to any desired module context
+#### Returns
 
----
-
-### EVENT_LISTENER_OPTIONS_PLUGIN_PROVIDER
-
-`Const` **EVENT_LISTENER_OPTIONS_PLUGIN_PROVIDER**: `Provider`
-
-Holds the necessary dependency information to provide the
-[EventListenerOptionsPlugin](../classes/EventManagerPlugin.EventListenerOptionsPlugin.md) to any desired module context
+`Provider`
 
 ---
 
-### EVENT_PREVENTION_PLUGIN_PROVIDER
+### provideEventListenerOptionsPlugin
 
-`Const` **EVENT_PREVENTION_PLUGIN_PROVIDER**: `Provider`
+**provideEventListenerOptionsPlugin**(): `Provider`
 
-Holds the necessary dependency information to provide the
-[EventPreventionPlugin](../classes/EventManagerPlugin.EventPreventionPlugin.md) to any desired module context
+#### Returns
+
+`Provider`
+
+---
+
+### provideEventPreventionPlugin
+
+**provideEventPreventionPlugin**(): `Provider`
+
+#### Returns
+
+`Provider`

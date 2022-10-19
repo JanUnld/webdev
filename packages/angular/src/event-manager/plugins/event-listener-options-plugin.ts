@@ -1,4 +1,4 @@
-import { Injectable, NgModule, Provider } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { EventListener, EventManagerPlugin, EventUnlistener } from '../event-manager-plugin';
 
@@ -30,15 +30,10 @@ export class EventListenerOptionsPlugin extends EventManagerPlugin {
   }
 }
 
-/**
- * Holds the necessary dependency information to provide the
- * {@link EventListenerOptionsPlugin} to any desired module context
- */
-export const EVENT_LISTENER_OPTIONS_PLUGIN_PROVIDER: Provider = {
-  provide: EVENT_MANAGER_PLUGINS,
-  useClass: EventListenerOptionsPlugin,
-  multi: true,
-};
-
-@NgModule({ providers: [EVENT_LISTENER_OPTIONS_PLUGIN_PROVIDER] })
-export class EventListenerOptionsPluginModule {}
+export function provideEventListenerOptionsPlugin(): Provider {
+  return {
+    provide: EVENT_MANAGER_PLUGINS,
+    useClass: EventListenerOptionsPlugin,
+    multi: true,
+  };
+}

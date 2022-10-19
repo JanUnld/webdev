@@ -40,8 +40,28 @@ export const PARAGRAPH_ENCAPSULATION_PROVIDER: Provider = {
 
 - [TEMPLATE_ENCAPSULATIONS](Encapsulation.md#template_encapsulations)
 
+### Functions
+
+- [provideTemplateEncapsulation](Encapsulation.md#providetemplateencapsulation)
+
 ## Variables
 
 ### TEMPLATE_ENCAPSULATIONS
 
 `Const` **TEMPLATE_ENCAPSULATIONS**: `InjectionToken`<[`TemplateEncapsulation`](../interfaces/Encapsulation.TemplateEncapsulation.md)\>
+
+## Functions
+
+### provideTemplateEncapsulation
+
+**provideTemplateEncapsulation**(`encapsulation`): `Provider`
+
+#### Parameters
+
+| Name            | Type                                                                            |
+| :-------------- | :------------------------------------------------------------------------------ |
+| `encapsulation` | [`TemplateEncapsulation`](../interfaces/Encapsulation.TemplateEncapsulation.md) |
+
+#### Returns
+
+`Provider`

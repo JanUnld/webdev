@@ -41,6 +41,14 @@
       "options": {
         "lintFilePatterns": ["packages/angular/**/*.ts", "packages/angular/**/*.html"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "skipProjectChangelog": true,
+        "tagPrefix": "${projectName}@v"
+      }
     }
   },
   "tags": []

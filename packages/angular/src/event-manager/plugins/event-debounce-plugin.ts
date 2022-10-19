@@ -1,4 +1,4 @@
-import { Injectable, NgModule, Provider } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -29,15 +29,10 @@ export class EventDebouncePlugin extends EventManagerPlugin {
   }
 }
 
-/**
- * Holds the necessary dependency information to provide the
- * {@link EventDebouncePlugin} to any desired module context
- */
-export const EVENT_DEBOUNCE_PLUGIN_PROVIDER: Provider = {
-  provide: EVENT_MANAGER_PLUGINS,
-  useClass: EventDebouncePlugin,
-  multi: true,
-};
-
-@NgModule({ providers: [EVENT_DEBOUNCE_PLUGIN_PROVIDER] })
-export class EventDebouncePluginModule {}
+export function provideEventDebouncePlugin(): Provider {
+  return {
+    provide: EVENT_MANAGER_PLUGINS,
+    useClass: EventDebouncePlugin,
+    multi: true,
+  };
+}

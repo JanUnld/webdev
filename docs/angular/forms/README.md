@@ -19,7 +19,8 @@ npm i @janunld/angular
 ## API
 
 For a detailed overview of the interfaces and functionality provided by this package, please take
-a look at the [docs][docs]. There might also appear various secondary entry points.
+a look at the [docs][docs]. There might also appear various secondary entry points. Which are **not**
+directly accessible from the main entry point of this package, as they tend to be more specialized.
 
 ### Secondary Entry Points
 

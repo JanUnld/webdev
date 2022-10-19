@@ -7,7 +7,6 @@ import {
   Input,
   IterableDiffers,
   KeyValueDiffers,
-  NgModule,
   OnChanges,
   OnDestroy,
   Renderer2,
@@ -20,6 +19,7 @@ import {
 @Directive({
   selector: '[templateOutlet]',
   exportAs: 'templateOutlet',
+  standalone: true,
 })
 export class TemplateOutlet<T = any> implements DoCheck, OnChanges, OnDestroy {
   private _viewRef: EmbeddedViewRef<T> | null = null;
@@ -92,13 +92,4 @@ export class TemplateOutlet<T = any> implements DoCheck, OnChanges, OnDestroy {
       this._viewRef = this.viewContainerRef.createEmbeddedView(this.template, this.context);
     }
   }
-  protected setViewRef(viewRef: EmbeddedViewRef<any>): void {
-    if (viewRef instanceof EmbeddedViewRef) this._viewRef = viewRef;
-  }
 }
-
-@NgModule({
-  declarations: [TemplateOutlet],
-  exports: [TemplateOutlet],
-})
-export class TemplateOutletModule {}
