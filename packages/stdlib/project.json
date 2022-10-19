@@ -25,9 +25,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": [
-          "node tools/scripts/publish.mjs stdlib {args.version} {args.tag}"
-        ]
+        "commands": ["node tools/scripts/publish.mjs stdlib {args.version} {args.tag}"]
       },
       "dependsOn": [
         {
@@ -45,7 +43,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/stdlib"],
+      "outputs": ["{workspaceRoot}/coverage/packages/stdlib"],
       "options": {
         "jestConfig": "packages/stdlib/jest.config.ts",
         "passWithNoTests": true
