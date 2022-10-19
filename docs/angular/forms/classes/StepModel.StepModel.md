@@ -30,7 +30,6 @@
 
 ### Methods
 
-- [[iterator]](StepModel.StepModel.md#[iterator])
 - [activate](StepModel.StepModel.md#activate)
 - [get](StepModel.StepModel.md#get)
 - [indexOf](StepModel.StepModel.md#indexof)
@@ -104,20 +103,6 @@ Observable&lt;Step \| null\&gt;.constructor
 `null` \| [`Step`](StepModel.Step.md)
 
 ## Methods
-
-### [iterator]
-
-**[iterator]**(): `Iterator`<[`Step`](StepModel.Step.md), `any`, `undefined`\>
-
-#### Returns
-
-`Iterator`<[`Step`](StepModel.Step.md), `any`, `undefined`\>
-
-#### Implementation of
-
-Iterable.\_\_@iterator@34
-
----
 
 ### activate
 

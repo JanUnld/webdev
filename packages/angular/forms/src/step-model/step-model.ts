@@ -270,6 +270,7 @@ export class StepModel extends Observable<Step | null> implements Iterable<Step>
     }
   }
 
+  /** @ignore */
   [Symbol.iterator](): Iterator<Step> {
     return this.subjects.getValue()[Symbol.iterator]();
   }
