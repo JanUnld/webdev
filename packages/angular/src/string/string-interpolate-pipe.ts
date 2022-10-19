@@ -1,4 +1,4 @@
-import { Inject, NgModule, Pipe, PipeTransform } from '@angular/core';
+import { Inject, Pipe, PipeTransform } from '@angular/core';
 import {
   STRING_INTERPOLATION_REPLACER,
   STRING_INTERPOLATION_SCHEME,
@@ -7,7 +7,7 @@ import {
   StringInterpolator,
 } from './string-interpolator';
 
-@Pipe({ name: 'interpolate' })
+@Pipe({ name: 'interpolate', standalone: true })
 export class StringInterpolatePipe implements PipeTransform {
   constructor(
     readonly interpolator: StringInterpolator,
@@ -21,9 +21,3 @@ export class StringInterpolatePipe implements PipeTransform {
     return this.interpolator.interpolate(value, params, scheme, replacer);
   }
 }
-
-@NgModule({
-  declarations: [StringInterpolatePipe],
-  exports: [StringInterpolatePipe],
-})
-export class StringInterpolatePipeModule {}

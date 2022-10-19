@@ -7,7 +7,6 @@
 ### Classes
 
 - [StringInterpolatePipe](../classes/StringInterpolator.StringInterpolatePipe.md)
-- [StringInterpolatePipeModule](../classes/StringInterpolator.StringInterpolatePipeModule.md)
 - [StringInterpolator](../classes/StringInterpolator.StringInterpolator.md)
 
 ### Type Aliases

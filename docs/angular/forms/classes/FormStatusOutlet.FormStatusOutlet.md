@@ -4,29 +4,6 @@
 
 [FormStatusOutlet](../modules/FormStatusOutlet.md).FormStatusOutlet
 
-Outlet component taking care of any AbstractControl status (including
-pending validations). Error messages may be provided on each individual di
-(dependency injection) layer.
-
-```typescript
-provideFormErrorMessages({
-  required: () => 'Required: Please enter a value',
-});
-```
-
-```html
-<form [formGroup]="formGroup">
-  <input type="text" formControlName="foo" />
-
-  <form-status-outlet formControlName="foo"></form-status-outlet>
-  <!-- or -->
-  <form-status-outlet formControlName="foo">
-    <ng-template formStatusPendingDef>Looking for any existing foos...</ng-template>
-    <ng-template formStatusValidDef>Foo is available!</ng-template>
-  </form-status-outlet>
-</form>
-```
-
 ## Implements
 
 - `OnChanges`

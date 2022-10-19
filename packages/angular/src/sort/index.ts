@@ -3,7 +3,7 @@
  * project sort states onto a view. They may be combined with either a client sided or server sided sort
  * functionality. For client sided filtering you can take a look at the `PropertySort` implementation.
  *
- * @example ```html
+ * ```html
  * <!-- sort group with multiple states being set, must allow multiple tho, can also contain orders -->
  * <table [sortGroup]="[ 'lastName,asc', 'dateOfBirth' ]"
  *   sortGroupAllowsMultiple="true"

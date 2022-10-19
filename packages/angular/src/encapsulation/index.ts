@@ -1,5 +1,5 @@
 /**
- * @example ```typescript
+ * ```typescript
  * Component({
  *   selector: 'paragraph',
  *   template: `<ng-content></ng-content>`

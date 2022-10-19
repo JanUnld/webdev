@@ -54,30 +54,6 @@ export const FORM_ERROR_MESSAGE = new InjectionToken<string>('FORM_ERROR_MESSAGE
 
 /* eslint-enable @typescript-eslint/no-non-null-assertion*/
 
-/**
- * Outlet component taking care of any {@link AbstractControl} status (including
- * pending validations). Error messages may be provided on each individual di
- * (dependency injection) layer.
- *
- * ```typescript
- * provideFormErrorMessages({
- *   required: () => 'Required: Please enter a value',
- * });
- * ```
- *
- * ```html
- * <form [formGroup]="formGroup">
- *   <input type="text" formControlName="foo" />
- *
- *   <form-status-outlet formControlName="foo"></form-status-outlet>
- *   <!-- or -->
- *   <form-status-outlet formControlName="foo">
- *     <ng-template formStatusPendingDef>Looking for any existing foos...</ng-template>
- *     <ng-template formStatusValidDef>Foo is available!</ng-template>
- *   </form-status-outlet>
- * </form>
- * ```
- */
 @Component({
   selector: 'form-status-outlet',
   styles: ['form-status-outlet { display: block }'],

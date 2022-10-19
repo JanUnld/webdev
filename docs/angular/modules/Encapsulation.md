@@ -2,8 +2,6 @@
 
 # Module: Encapsulation
 
-**`Example`**
-
 ```typescript
 Component({
   selector: 'paragraph',

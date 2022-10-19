@@ -2,8 +2,6 @@
 
 # Module: TemplateOutlet
 
-**`Example`**
-
 ```html
 <ng-template #foo>
   <div>bar</div>

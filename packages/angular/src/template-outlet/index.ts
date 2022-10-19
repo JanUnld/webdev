@@ -1,5 +1,5 @@
 /**
- * @example ```html
+ * ```html
  * <ng-template #foo>
  *   <div>bar</div>
  *   <div>bar2</div>
