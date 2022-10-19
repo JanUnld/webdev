@@ -1,16 +1,12 @@
 /** Describes a type of empty property value that might appear within an object */
-export type EmptyJsonPropType =
-  | 'emptyString'
-  | 'emptyArray'
-  | 'emptyObject'
-  | 'nullOrUndefined';
+export type EmptyJsonPropType = 'emptyString' | 'emptyArray' | 'emptyObject' | 'nullOrUndefined';
 
 /**
  * Removes all "empty" properties from the given json object and returns the "compressed" value.
  * The "empty" condition is given for {@link EmptyJsonPropType}
  *
  * @example ```typescript
- * removeEmptyJsonProps({
+ * removeEmptyProps({
  *   emptyStr: '',
  *   emptyArr: [],
  *   emptyObj: {},
@@ -43,10 +39,7 @@ export function removeEmptyProps<T>(
           return objOrArray;
         }
         // if we are dealing with a nested value, try to recursively remove all empty properties
-        if (
-          options?.recursive === false &&
-          (Array.isArray(value) || typeof value === 'object')
-        ) {
+        if (options?.recursive === false && (Array.isArray(value) || typeof value === 'object')) {
           value = removeEmptyProps(value, options);
         }
         // re check whether the value should be removed after the recursive resolution
@@ -66,30 +59,18 @@ export function removeEmptyProps<T>(
 }
 
 /** @internal */
-function canRemoveProp(
-  value: unknown,
-  options?: { ignore?: EmptyJsonPropType[] | EmptyJsonPropType }
-): boolean {
+function canRemoveProp(value: unknown, options?: { ignore?: EmptyJsonPropType[] | EmptyJsonPropType }): boolean {
   const ignore = options?.ignore;
 
   const isNullOrUndefined = value == null;
   const isEmptyString = typeof value === 'string' && value.trim() === '';
   const isEmptyArray = Array.isArray(value) && value?.length === 0;
-  const isEmptyObj =
-    !isNullOrUndefined &&
-    typeof value === 'object' &&
-    Object.entries(value).length === 0;
+  const isEmptyObj = !isNullOrUndefined && typeof value === 'object' && Object.entries(value).length === 0;
 
   return (
-    (isNullOrUndefined &&
-      ignore !== 'nullOrUndefined' &&
-      !ignore?.includes('nullOrUndefined')) ||
-    (isEmptyString &&
-      ignore !== 'emptyString' &&
-      !ignore?.includes('emptyString')) ||
-    (isEmptyArray &&
-      ignore !== 'emptyArray' &&
-      !ignore?.includes('emptyArray')) ||
+    (isNullOrUndefined && ignore !== 'nullOrUndefined' && !ignore?.includes('nullOrUndefined')) ||
+    (isEmptyString && ignore !== 'emptyString' && !ignore?.includes('emptyString')) ||
+    (isEmptyArray && ignore !== 'emptyArray' && !ignore?.includes('emptyArray')) ||
     (isEmptyObj && ignore !== 'emptyObject' && !ignore?.includes('emptyObject'))
   );
 }

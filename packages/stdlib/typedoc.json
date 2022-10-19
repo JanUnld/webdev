@@ -8,5 +8,6 @@
   "disableSources": true,
   "githubPages": false,
   "plugin": ["typedoc-plugin-markdown"],
-  "hideMembersSymbol": true
+  "hideMembersSymbol": true,
+  "logLevel": "Error"
 }

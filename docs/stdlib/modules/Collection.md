@@ -20,22 +20,22 @@ Distinctively filters a collection leaving only unique entries
 **`Example`**
 
 ```typescript
-[ 1, 1, 2 ].filter(distinct); // [ 1, 2 ]
+[1, 1, 2].filter(distinct); // [ 1, 2 ]
 ```
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `unknown` |
-| `index` | `number` |
+| Name    | Type        |
+| :------ | :---------- |
+| `value` | `unknown`   |
+| `index` | `number`    |
 | `array` | `unknown`[] |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### distinctBy
 
@@ -47,19 +47,19 @@ by a given property selector
 **`Example`**
 
 ```typescript
-[ { x: 1 }, { x: 1 }, { x: 2 } ].filter(distinctBy('x')); // [ { x 1 }, { x: 2 } ]
+[{ x: 1 }, { x: 1 }, { x: 2 }].filter(distinctBy('x')); // [ { x 1 }, { x: 2 } ]
 ```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type                                                       |
+| :--------- | :--------------------------------------------------------- |
 | `selector` | `string` \| `PropertyKey`[] \| (`value`: `T`) => `unknown` |
 
 #### Returns
@@ -70,11 +70,11 @@ by a given property selector
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
-| `i` | `number` |
-| `arr` | `T`[] |
+| Name    | Type     |
+| :------ | :------- |
+| `value` | `T`      |
+| `i`     | `number` |
+| `arr`   | `T`[]    |
 
 ##### Returns
 

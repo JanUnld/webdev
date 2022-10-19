@@ -18,29 +18,29 @@
 
 ### FlatTreeNode
 
- **FlatTreeNode**: `Object`
+**FlatTreeNode**: `Object`
 
 Flat tree node representation requiring only a level and a child count number
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
+| Name         | Type     |
+| :----------- | :------- |
 | `childCount` | `number` |
-| `level` | `number` |
+| `level`      | `number` |
 
-___
+---
 
 ### TreeNode
 
- **TreeNode**: `Object`
+**TreeNode**: `Object`
 
 Nested tree node representation consisting only of children
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
+| Name        | Type                             |
+| :---------- | :------------------------------- |
 | `children?` | [`TreeNode`](Tree.md#treenode)[] |
 
 ## Functions
@@ -57,7 +57,7 @@ Flattens a tree structure based on a predefined [TreeNode](Tree.md#treenode) int
 // |- root node
 //   |- child node
 //   |- child node
-flattenTree({ children: [ {}, {} ] })
+flattenTree({ children: [{}, {}] });
 // [
 //   { level: 0, childCount: 2 },
 //   { level: 1, childCount: 0 },
@@ -67,22 +67,22 @@ flattenTree({ children: [ {}, {} ] })
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `unknown` |
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `unknown` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `tree` | [`TreeNode`](Tree.md#treenode) \| [`TreeNode`](Tree.md#treenode)[] | The tree structure to be flattened |
-| `baseLevel?` | `number` | The base level to be used when flattening |
+| Name         | Type                                                               | Description                               |
+| :----------- | :----------------------------------------------------------------- | :---------------------------------------- |
+| `tree`       | [`TreeNode`](Tree.md#treenode) \| [`TreeNode`](Tree.md#treenode)[] | The tree structure to be flattened        |
+| `baseLevel?` | `number`                                                           | The base level to be used when flattening |
 
 #### Returns
 
 [`FlatTreeNode`](Tree.md#flattreenode) & `T`[]
 
-___
+---
 
 ### restoreFlatTree
 
@@ -97,20 +97,20 @@ restoreFlatTree([
   { level: 0, childCount: 2 },
   { level: 1, childCount: 0 },
   { level: 1, childCount: 0 },
-])
+]);
 // { children: [ {}, {} ] }
 ```
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `unknown` |
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `unknown` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name       | Type                                     | Description                                                       |
+| :--------- | :--------------------------------------- | :---------------------------------------------------------------- |
 | `flatTree` | [`FlatTreeNode`](Tree.md#flattreenode)[] | The flat tree structure to be restored to a nested tree structure |
 
 #### Returns

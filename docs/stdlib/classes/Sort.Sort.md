@@ -9,8 +9,8 @@ Basic sort mechanism implementation meant to be extended. May also be used as-is
 ## Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 ## Hierarchy
 
@@ -42,21 +42,21 @@ Basic sort mechanism implementation meant to be extended. May also be used as-is
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `comparator` | (`a`: `T`, `b`: `T`) => `number` | The comparator function to be used to sort |
+| Name            | Type                                        | Description                                                   |
+| :-------------- | :------------------------------------------ | :------------------------------------------------------------ |
+| `comparator`    | (`a`: `T`, `b`: `T`) => `number`            | The comparator function to be used to sort                    |
 | `defaultOrder?` | [`SortOrder`](../modules/Sort.md#sortorder) | The default order the comparator function implicitly enforces |
 
 ## Properties
 
 ### comparator
 
- **comparator**: (`a`: `T`, `b`: `T`) => `number`
+**comparator**: (`a`: `T`, `b`: `T`) => `number`
 
 #### Type declaration
 
@@ -65,19 +65,19 @@ Basic sort mechanism implementation meant to be extended. May also be used as-is
 ##### Parameters
 
 | Name | Type |
-| :------ | :------ |
-| `a` | `T` |
-| `b` | `T` |
+| :--- | :--- |
+| `a`  | `T`  |
+| `b`  | `T`  |
 
 ##### Returns
 
 `number`
 
-___
+---
 
 ### defaultOrder
 
- `Optional` **defaultOrder**: [`SortOrder`](../modules/Sort.md#sortorder)
+`Optional` **defaultOrder**: [`SortOrder`](../modules/Sort.md#sortorder)
 
 ## Methods
 
@@ -90,9 +90,9 @@ be customized in line using the order parameter
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Iterable`<`T`\> | The desired data to be sorted |
+| Name    | Type                                                       | Description                          |
+| :------ | :--------------------------------------------------------- | :----------------------------------- |
+| `data`  | `Iterable`<`T`\>                                           | The desired data to be sorted        |
 | `order` | `undefined` \| [`SortOrder`](../modules/Sort.md#sortorder) | The order to enforce during the sort |
 
 #### Returns

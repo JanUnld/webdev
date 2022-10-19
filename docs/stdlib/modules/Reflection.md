@@ -20,7 +20,7 @@
 
 ### IteratorResult
 
- **IteratorResult**<`T`\>: `T` extends `Iterable`<infer U\> ? `U` : `never`
+**IteratorResult**<`T`\>: `T` extends `Iterable`<infer U\> ? `U` : `never`
 
 Infers the iterator result type of an arbitrary Iterable type
 
@@ -33,21 +33,21 @@ type ItemType = IteratorResult<Iterable<string>>; // string
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
-___
+---
 
 ### Predicate
 
- **Predicate**<`T`, `P`\>: (`value`: `T`, ...`args`: `P`) => `boolean`
+**Predicate**<`T`, `P`\>: (`value`: `T`, ...`args`: `P`) => `boolean`
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `P` | extends `any`[] = `unknown`[] |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `T`  | `T`                           |
+| `P`  | extends `any`[] = `unknown`[] |
 
 #### Type declaration
 
@@ -58,25 +58,25 @@ Describes a predicate function returning either `true` or `false`, depending on 
 **`Example`**
 
 ```typescript
-const isBar: Predicate<{ foo: string }> = value => value.foo === 'bar';
+const isBar: Predicate<{ foo: string }> = (value) => value.foo === 'bar';
 ```
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
-| `...args` | `P` |
+| Name      | Type |
+| :-------- | :--- |
+| `value`   | `T`  |
+| `...args` | `P`  |
 
 ##### Returns
 
 `boolean`
 
-___
+---
 
 ### Primitive
 
- **Primitive**: `boolean` \| `number` \| `string` \| `symbol`
+**Primitive**: `boolean` \| `number` \| `string` \| `symbol`
 
 Union for primitive value types such as boolean, number, string or symbol
 
@@ -90,15 +90,15 @@ Returns whether a given object is Iterable
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name  | Type  |
+| :---- | :---- |
 | `obj` | `any` |
 
 #### Returns
 
 obj is Iterable<unknown\>
 
-___
+---
 
 ### isPrimitive
 
@@ -108,15 +108,15 @@ Returns whether a given value is a [Primitive](Reflection.md#primitive) or not
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name  | Type  |
+| :---- | :---- |
 | `obj` | `any` |
 
 #### Returns
 
 obj is Primitive
 
-___
+---
 
 ### traverse
 
@@ -131,24 +131,24 @@ function will return a truthy result.
 ```typescript
 traverse(treeNode, {
   through: 'parentNode',
-  break: (node) => node.foo === 'bar'
-})
+  break: (node) => node.foo === 'bar',
+});
 ```
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `unknown` |
+| Name | Type      |
+| :--- | :-------- |
+| `T`  | `unknown` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `T` | The object or array to traverse through |
-| `options` | `Object` | Required configuration interface |
-| `options.break?` | [`Predicate`](Reflection.md#predicate)<`T`, `unknown`[]\> | Optional predicate to break the traverse when returning `true` |
-| `options.through` | `string` \| `PropertyKey`[] \| (`obj`: `T`) => `unknown` | The selector function or property path returning the _next_ traverse target |
+| Name              | Type                                                      | Description                                                                 |
+| :---------------- | :-------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| `obj`             | `T`                                                       | The object or array to traverse through                                     |
+| `options`         | `Object`                                                  | Required configuration interface                                            |
+| `options.break?`  | [`Predicate`](Reflection.md#predicate)<`T`, `unknown`[]\> | Optional predicate to break the traverse when returning `true`              |
+| `options.through` | `string` \| `PropertyKey`[] \| (`obj`: `T`) => `unknown`  | The selector function or property path returning the _next_ traverse target |
 
 #### Returns
 

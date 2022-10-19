@@ -2,7 +2,7 @@
  * Excludes one or more entries from the given object or array and returns the result
  *
  * @example ```typescript
- * omitJsonProps({ foo: 'bar', bar: 'baz' }, 'bar'); // { foo: 'bar' }
+ * omitProps({ foo: 'bar', bar: 'baz' }, 'bar'); // { foo: 'bar' }
  * ```
  *
  * @param json The object or array value be "compressed"
@@ -10,10 +10,7 @@
  *
  * @remarks Prototype inheritance won't be preserved, please use JSON only!
  */
-export function omitProps<T, K extends keyof T>(
-  json: T,
-  ...exclude: K[]
-): Omit<T, K> {
+export function omitProps<T, K extends keyof T>(json: T, ...exclude: K[]): Omit<T, K> {
   const isArray = Array.isArray(json);
 
   if (isArray) {
@@ -22,7 +19,7 @@ export function omitProps<T, K extends keyof T>(
     exclude = exclude.map((key) => key.toString()) as K[];
   }
 
-  return Object.entries(json)
+  return Object.entries(json as any)
     .filter(([key]) => !exclude?.includes(key as K))
     .reduce(
       (objOrArray: unknown, [key, value]) => {

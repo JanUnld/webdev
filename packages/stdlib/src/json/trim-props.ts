@@ -4,9 +4,9 @@
  * additional options
  *
  * @example ```typescript
- * trimJsonProps({ foo: '  bar   ' }) // { foo: 'bar' }
- * trimJsonProps({ foo: '  bar   ' }, { mode: 'trailing' }) // { foo: '  bar' }
- * trimJsonProps({ foo: '  bar----------' }, { include: ['-'] }) // { foo: 'bar' }
+ * trimProps({ foo: '  bar   ' }) // { foo: 'bar' }
+ * trimProps({ foo: '  bar   ' }, { mode: 'trailing' }) // { foo: '  bar' }
+ * trimProps({ foo: '  bar----------' }, { include: ['-'] }) // { foo: 'bar' }
  * ```
  *
  * @param json The desired object or array value to be trimmed
@@ -26,7 +26,7 @@ export function trimProps<T>(
   }
 ): T {
   const isArray = Array.isArray(json);
-  return Object.entries(json).reduce(
+  return Object.entries(json as any).reduce(
     (objOrArray: unknown, [key, value]) => {
       const mode = options?.mode || 'both';
       const regExpGroups = ['\\s+', ...(options?.include || [])].join('|');
@@ -38,12 +38,9 @@ export function trimProps<T>(
           value = value.replace(leadingRegExp, '');
         }
         if (mode === 'trailing' || mode === 'both') {
-          value = value.replace(trailingRegExp, '');
+          value = (value as string).replace(trailingRegExp, '');
         }
-      } else if (
-        options?.recursive === false &&
-        (Array.isArray(value) || typeof value === 'object')
-      ) {
+      } else if (options?.recursive === false && (Array.isArray(value) || typeof value === 'object')) {
         value = trimProps(value, options);
       }
 

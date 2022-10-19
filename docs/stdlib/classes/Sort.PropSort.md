@@ -10,10 +10,7 @@ selector may be specified as either a selector function or a property path descr
 **`Example`**
 
 ```typescript
-new PropSort('foo.bar').apply([
-  { foo: { bar: 'z' } },
-  { foo: { bar: 'a' } }
-])
+new PropSort('foo.bar').apply([{ foo: { bar: 'z' } }, { foo: { bar: 'a' } }]);
 // [
 //   { foo: { bar: 'a' } },
 //   { foo: { bar: 'z' } }
@@ -23,8 +20,8 @@ new PropSort('foo.bar').apply([
 ## Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 ## Hierarchy
 
@@ -57,13 +54,13 @@ new PropSort('foo.bar').apply([
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name       | Type                                                   | Description                                                                |
+| :--------- | :----------------------------------------------------- | :------------------------------------------------------------------------- |
 | `selector` | `string` \| `PropertyKey`[] \| (`o`: `T`) => `unknown` | Either a selector function or property path to resolve values when sorting |
 
 #### Overrides
@@ -74,7 +71,7 @@ new PropSort('foo.bar').apply([
 
 ### comparator
 
- **comparator**: (`a`: `T`, `b`: `T`) => `number`
+**comparator**: (`a`: `T`, `b`: `T`) => `number`
 
 #### Type declaration
 
@@ -83,9 +80,9 @@ new PropSort('foo.bar').apply([
 ##### Parameters
 
 | Name | Type |
-| :------ | :------ |
-| `a` | `T` |
-| `b` | `T` |
+| :--- | :--- |
+| `a`  | `T`  |
+| `b`  | `T`  |
 
 ##### Returns
 
@@ -95,21 +92,21 @@ new PropSort('foo.bar').apply([
 
 [Sort](Sort.Sort.md).[comparator](Sort.Sort.md#comparator)
 
-___
+---
 
 ### defaultOrder
 
- `Optional` **defaultOrder**: [`SortOrder`](../modules/Sort.md#sortorder)
+`Optional` **defaultOrder**: [`SortOrder`](../modules/Sort.md#sortorder)
 
 #### Inherited from
 
 [Sort](Sort.Sort.md).[defaultOrder](Sort.Sort.md#defaultorder)
 
-___
+---
 
 ### selector
 
- **selector**: `string` \| `PropertyKey`[] \| (`o`: `T`) => `unknown`
+**selector**: `string` \| `PropertyKey`[] \| (`o`: `T`) => `unknown`
 
 ## Methods
 
@@ -122,9 +119,9 @@ be customized in line using the order parameter
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Iterable`<`T`\> | The desired data to be sorted |
+| Name    | Type                                                       | Description                          |
+| :------ | :--------------------------------------------------------- | :----------------------------------- |
+| `data`  | `Iterable`<`T`\>                                           | The desired data to be sorted        |
 | `order` | `undefined` \| [`SortOrder`](../modules/Sort.md#sortorder) | The order to enforce during the sort |
 
 #### Returns

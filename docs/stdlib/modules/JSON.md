@@ -20,7 +20,7 @@
 
 ### EmptyJsonPropType
 
- **EmptyJsonPropType**: ``"emptyString"`` \| ``"emptyArray"`` \| ``"emptyObject"`` \| ``"nullOrUndefined"``
+**EmptyJsonPropType**: `"emptyString"` \| `"emptyArray"` \| `"emptyObject"` \| `"nullOrUndefined"`
 
 Describes a type of empty property value that might appear within an object
 
@@ -35,7 +35,7 @@ Excludes one or more entries from the given object or array and returns the resu
 **`Example`**
 
 ```typescript
-omitJsonProps({ foo: 'bar', bar: 'baz' }, 'bar'); // { foo: 'bar' }
+omitProps({ foo: 'bar', bar: 'baz' }, 'bar'); // { foo: 'bar' }
 ```
 
 **`Remarks`**
@@ -44,61 +44,61 @@ Prototype inheritance won't be preserved, please use JSON only!
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K` | extends `string` \| `number` \| `symbol` |
+| Name | Type                                     |
+| :--- | :--------------------------------------- |
+| `T`  | `T`                                      |
+| `K`  | extends `string` \| `number` \| `symbol` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `json` | `T` | The object or array value be "compressed" |
+| Name         | Type  | Description                                      |
+| :----------- | :---- | :----------------------------------------------- |
+| `json`       | `T`   | The object or array value be "compressed"        |
 | `...exclude` | `K`[] | One or more desired property keys to be excluded |
 
 #### Returns
 
 `Omit`<`T`, `K`\>
 
-___
+---
 
 ### queryProp
 
-**queryProp**<`R`, `T`\>(`json`, `query`): `R` \| ``null``
+**queryProp**<`R`, `T`\>(`json`, `query`): `R` \| `null`
 
 Queries an object property value either by using a selector function or a path as described by [queryPropPath](JSON.md#queryproppath)
 
 **`Example`**
 
 ```typescript
-queryObjectProp(obj, '0.prop1.1.prop2');
-queryObjectProp(obj, [ 0, 'prop1', 1, 'prop2' ]);
-queryObjectProp(obj, (o) => o?.[0]?.prop1?.[1]?.prop2);
+queryProp(obj, '0.prop1.1.prop2');
+queryProp(obj, [0, 'prop1', 1, 'prop2']);
+queryProp(obj, (o) => o?.[0]?.prop1?.[1]?.prop2);
 ```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `R` |
-| `T` |
+| :--- |
+| `R`  |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `json` | `T` | The targeted object or array to resolve the path from |
+| Name    | Type                                                     | Description                                                                               |
+| :------ | :------------------------------------------------------- | :---------------------------------------------------------------------------------------- |
+| `json`  | `T`                                                      | The targeted object or array to resolve the path from                                     |
 | `query` | `string` \| `PropertyKey`[] \| (`obj`: `T`) => `unknown` | The desired query function or property path as explicit array or dot (.) separated string |
 
 #### Returns
 
-`R` \| ``null``
+`R` \| `null`
 
-___
+---
 
 ### queryPropPath
 
-**queryPropPath**<`R`, `T`\>(`json`, `path`): `R` \| ``null``
+**queryPropPath**<`R`, `T`\>(`json`, `path`): `R` \| `null`
 
 Queries an object property value by its path in the format `prop1.prop2.prop3` also including out of the
 box support for index based signatures e.g. `0.prop1.1.prop2`. The resolution is performed in a null safe manner,
@@ -107,29 +107,29 @@ not breaking but returning when discovering such an undefined case
 **`Example`**
 
 ```typescript
-queryObjectPropPath(obj, '0.prop1.1.prop2');
-queryObjectPropPath(obj, [ 0, 'prop1', 1, 'prop2' ]);
+queryPropPath(obj, '0.prop1.1.prop2');
+queryPropPath(obj, [0, 'prop1', 1, 'prop2']);
 ```
 
 #### Type parameters
 
 | Name |
-| :------ |
-| `R` |
-| `T` |
+| :--- |
+| `R`  |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `json` | `T` | The targeted object or array to resolve the path from |
+| Name   | Type                        | Description                                                             |
+| :----- | :-------------------------- | :---------------------------------------------------------------------- |
+| `json` | `T`                         | The targeted object or array to resolve the path from                   |
 | `path` | `string` \| `PropertyKey`[] | The desired property path as explicit array or dot (.) separated string |
 
 #### Returns
 
-`R` \| ``null``
+`R` \| `null`
 
-___
+---
 
 ### removeEmptyProps
 
@@ -141,13 +141,16 @@ The "empty" condition is given for [EmptyJsonPropType](JSON.md#emptyjsonproptype
 **`Example`**
 
 ```typescript
-removeEmptyJsonProps({
-  emptyStr: '',
-  emptyArr: [],
-  emptyObj: {},
-  empty: null,
-  foo: 'bar'
-}, { ignore: 'emptyString' }) // { emptyStr: '', foo: 'bar' }
+removeEmptyProps(
+  {
+    emptyStr: '',
+    emptyArr: [],
+    emptyObj: {},
+    empty: null,
+    foo: 'bar',
+  },
+  { ignore: 'emptyString' }
+); // { emptyStr: '', foo: 'bar' }
 ```
 
 **`Remarks`**
@@ -157,23 +160,23 @@ Prototype inheritance won't be preserved, please use JSON only!
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `json` | `T` | The object or array value that should be "compressed" |
-| `options?` | `Object` | Optional configuration interface |
-| `options.ignore?` | [`EmptyJsonPropType`](JSON.md#emptyjsonproptype) \| [`EmptyJsonPropType`](JSON.md#emptyjsonproptype)[] | Excludes one or more empty property cases from being removed |
-| `options.recursive?` | `boolean` | May disable the default recursion of this function |
+| Name                 | Type                                                                                                   | Description                                                  |
+| :------------------- | :----------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |
+| `json`               | `T`                                                                                                    | The object or array value that should be "compressed"        |
+| `options?`           | `Object`                                                                                               | Optional configuration interface                             |
+| `options.ignore?`    | [`EmptyJsonPropType`](JSON.md#emptyjsonproptype) \| [`EmptyJsonPropType`](JSON.md#emptyjsonproptype)[] | Excludes one or more empty property cases from being removed |
+| `options.recursive?` | `boolean`                                                                                              | May disable the default recursion of this function           |
 
 #### Returns
 
 `Partial`<`T`\>
 
-___
+---
 
 ### trimProps
 
@@ -186,9 +189,9 @@ additional options
 **`Example`**
 
 ```typescript
-trimJsonProps({ foo: '  bar   ' }) // { foo: 'bar' }
-trimJsonProps({ foo: '  bar   ' }, { mode: 'trailing' }) // { foo: '  bar' }
-trimJsonProps({ foo: '  bar----------' }, { include: ['-'] }) // { foo: 'bar' }
+trimProps({ foo: '  bar   ' }); // { foo: 'bar' }
+trimProps({ foo: '  bar   ' }, { mode: 'trailing' }); // { foo: '  bar' }
+trimProps({ foo: '  bar----------' }, { include: ['-'] }); // { foo: 'bar' }
 ```
 
 **`Remarks`**
@@ -198,18 +201,18 @@ Prototype inheritance won't be preserved, please use JSON only!
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `json` | `T` | The desired object or array value to be trimmed |
-| `options?` | `Object` | Optional configuration interface |
-| `options.include?` | (`string` \| `RegExp`)[] | Adds more expressions to be trimmed while still depending on the given mode |
-| `options.mode?` | ``"leading"`` \| ``"trailing"`` \| ``"both"`` | Changes the trim mode to either leading or trailing |
-| `options.recursive?` | `boolean` | May disable the default recursion of this function |
+| Name                 | Type                                    | Description                                                                 |
+| :------------------- | :-------------------------------------- | :-------------------------------------------------------------------------- |
+| `json`               | `T`                                     | The desired object or array value to be trimmed                             |
+| `options?`           | `Object`                                | Optional configuration interface                                            |
+| `options.include?`   | (`string` \| `RegExp`)[]                | Adds more expressions to be trimmed while still depending on the given mode |
+| `options.mode?`      | `"leading"` \| `"trailing"` \| `"both"` | Changes the trim mode to either leading or trailing                         |
+| `options.recursive?` | `boolean`                               | May disable the default recursion of this function                          |
 
 #### Returns
 

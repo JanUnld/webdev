@@ -22,26 +22,26 @@ protocol, domain, ip, port and path specifiers
 **`Example`**
 
 ```typescript
-isAbsoluteURL('127.0.0.1') // true
-isAbsoluteURL('localhost:8080') // true
-isAbsoluteURL('ws://absolute.url') // true
-isAbsoluteURL('custom://absolute.url') // true
+isAbsoluteURL('127.0.0.1'); // true
+isAbsoluteURL('localhost:8080'); // true
+isAbsoluteURL('ws://absolute.url'); // true
+isAbsoluteURL('custom://absolute.url'); // true
 
-isAbsoluteURL('invalid:8080') // false
-isAbsoluteURL('relative/url') // false
+isAbsoluteURL('invalid:8080'); // false
+isAbsoluteURL('relative/url'); // false
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name  | Type     | Description                        |
+| :---- | :------- | :--------------------------------- |
 | `url` | `string` | The url string value to be checked |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### normalizeAbsoluteUrl
 
@@ -56,18 +56,18 @@ This function does not support relative url values, use [normalizeUrl](URL.md#no
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `url` | `string` | The url value to be normalized |
-| `options?` | `Object` | Options configuration interface |
-| `options.path?` | `string` | Append as relative path value to the normalized url value |
-| `options.protocol?` | `string` | Specified the protocol to be used, defaults to `"https"` |
+| Name                | Type     | Description                                               |
+| :------------------ | :------- | :-------------------------------------------------------- |
+| `url`               | `string` | The url value to be normalized                            |
+| `options?`          | `Object` | Options configuration interface                           |
+| `options.path?`     | `string` | Append as relative path value to the normalized url value |
+| `options.protocol?` | `string` | Specified the protocol to be used, defaults to `"https"`  |
 
 #### Returns
 
 `string`
 
-___
+---
 
 ### normalizeUrl
 
@@ -78,14 +78,14 @@ Normalizes an url string value enforcing consistent single slash usage
 **`Example`**
 
 ```typescript
-normalizeUrl('https://localhost:8080///relative//url') // https://localhost:8080/relative/url
-normalizeUrl('///relative//url') // /relative/url
+normalizeUrl('https://localhost:8080///relative//url'); // https://localhost:8080/relative/url
+normalizeUrl('///relative//url'); // /relative/url
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name          | Type       | Description                                              |
+| :------------ | :--------- | :------------------------------------------------------- |
 | `...segments` | `string`[] | One or more url segments to be normalized into one value |
 
 #### Returns

@@ -23,7 +23,7 @@
 
 ### SortOrder
 
- **SortOrder**: ``"ascending"`` \| ``"descending"``
+**SortOrder**: `"ascending"` \| `"descending"`
 
 The order in which sorting will happen, either ascending or descending
 
@@ -39,23 +39,23 @@ the value is a specific [SortOrder](Sort.md#sortorder) using the order parameter
 **`Example`**
 
 ```typescript
-isSortOrder('asc') // true
-isSortOrder('asc', 'ascending') // true
-isSortOrder('asc', 'descending') // false
+isSortOrder('asc'); // true
+isSortOrder('asc', 'ascending'); // true
+isSortOrder('asc', 'descending'); // false
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `string` | The string value to be checked |
+| Name     | Type                             | Description                                      |
+| :------- | :------------------------------- | :----------------------------------------------- |
+| `value`  | `string`                         | The string value to be checked                   |
 | `order?` | [`SortOrder`](Sort.md#sortorder) | Optional order value to explicitly check against |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### parseSortOrder
 
@@ -66,21 +66,21 @@ Parses a [SortOrder](Sort.md#sortorder) value based on a string input
 **`Example`**
 
 ```typescript
-parseSortOrder('asc') // 'ascending'
+parseSortOrder('asc'); // 'ascending'
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `str` | `string` | The string value to be parsed |
+| Name        | Type                             | Description                                                                 |
+| :---------- | :------------------------------- | :-------------------------------------------------------------------------- |
+| `str`       | `string`                         | The string value to be parsed                                               |
 | `fallback?` | [`SortOrder`](Sort.md#sortorder) | The fallback [SortOrder](Sort.md#sortorder) value to use when parsing fails |
 
 #### Returns
 
 `undefined` \| [`SortOrder`](Sort.md#sortorder)
 
-___
+---
 
 ### reverseSortOrder
 
@@ -91,14 +91,14 @@ Reverses a [SortOrder](Sort.md#sortorder) value
 **`Example`**
 
 ```typescript
-reverseSortOrder('ascending') // 'descending'
-reverseSortOrder('descending') // 'ascending'
+reverseSortOrder('ascending'); // 'descending'
+reverseSortOrder('descending'); // 'ascending'
 ```
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type                             |
+| :------ | :------------------------------- |
 | `order` | [`SortOrder`](Sort.md#sortorder) |
 
 #### Returns

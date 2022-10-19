@@ -1,14 +1,11 @@
-# Personal Standard Library
+# Personal Standard Library <br> [![NPM][npm-shield]][npm] [![API Docs][docs-shield]][docs]
 
-[![NPM][npm-shield]][npm] [![API Docs][docs-shield]][docs] 
-
-[docs]: ../../docs/stdlib/modules.md
+[docs]: https://github.com/JanUnld/web-std/blob/main/docs/stdlib/modules.md
 [docs-shield]: https://img.shields.io/badge/docs-typescript-blue?style=flat-square
 [npm]: https://www.npmjs.com/package/@janunld/stdlib
 [npm-shield]: https://img.shields.io/npm/v/@janunld/stdlib?color=red&style=flat-square
 
-The main goal of this package is to group together useful but quite general APIs that
-I personally find myself creating over and over again in various scenarios. 
+General APIs that I personally find myself creating over and over again in various scenarios.
 
 For a detailed overview of the included generics please take a look at the [docs][docs].
 
