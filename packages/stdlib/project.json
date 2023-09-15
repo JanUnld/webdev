@@ -5,13 +5,13 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:swc",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/stdlib",
         "main": "packages/stdlib/src/index.ts",
         "tsConfig": "packages/stdlib/tsconfig.lib.json",
-        "assets": ["packages/stdlib/*.md", "LICENSE"]
+        "assets": ["packages/stdlib/*.md", "LICENSE"],
       }
     },
     "doc": {
@@ -29,20 +29,19 @@
       },
       "dependsOn": [
         {
-          "projects": "self",
           "target": "build"
         }
       ]
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/stdlib/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/stdlib"],
       "options": {
         "jestConfig": "packages/stdlib/jest.config.ts",
